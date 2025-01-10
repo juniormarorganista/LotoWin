@@ -25,7 +25,7 @@ class loto:
       self.jlist = []
       self.loteria = loteria
       self.ini = 1
-      self.qtd_jogos = 10
+      self.qtd_jogos = 11
       self.read_results()
 
       if self.loteria == 'mega_sena':
@@ -120,6 +120,7 @@ class loto:
          jaux = self.gera_lista_aleatoria_de_elementos_nao_repetidos()
          # Verifica se o jogo gerado atende à condição de no máximo `n` números em comum
          if not tem_excesso_de_comuns(jaux, self.jlist, n):
+            print(jaux)
             self.jlist.append(jaux)
       
       return self.jlist
@@ -206,8 +207,8 @@ class loto:
 
       # Lista para armazenar os jogos que atendem ao critério
       jogos_selecionados = []
-      quantidade_jogos = 60
-      valor_desejado = 6
+      quantidade_jogos = 11
+      valor_desejado = 15
       # Gerar jogos até atingir a quantidade desejada
       while len(jogos_selecionados) < quantidade_jogos:
          # Gerar um novo jogo aleatório
@@ -389,9 +390,13 @@ class loto:
       return results
 
 if __name__ == '__main__':
-   ltms = loto('mega_sena')
-   ltms.treinar_modelo()
+   # ltms = loto('mega_sena')
+   # ltms.treinar_modelo()
    # print(ltms.treinar_modelo_com_hiperparametros())
 
-   # ltlf = loto('loto_facil')
+   ltlf = loto('loto_facil')
+   # ltlf.treinar_modelo()
+   jogos = ltlf.gera_jogos_com_max_n_numeros_em_comum(10)
+   for i in jogos:
+      print(i)
    # ltlf.aumentar_dados()
